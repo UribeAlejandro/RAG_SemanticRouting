@@ -10,4 +10,4 @@ DATA_URLS = [
 ]
 
 # LLM
-MODEL_PATH = "./models/mistral-7b-openorca.gguf2.Q4_0.gguf"
+MODEL_NAME = "llama2"
