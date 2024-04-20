@@ -2,7 +2,7 @@ import pytest
 from dotenv import load_dotenv
 
 from src.data.utils import embeddings_model, vector_database
-from src.pipeline.model import retrieval_grader
+from src.pipeline.grader import retrieval_grader
 
 load_dotenv()
 
