@@ -49,12 +49,12 @@ def hallucination_grader() -> RunnableSerializable:
     llm = ChatOllama(model=MODEL_NAME, format="json", temperature=0)
     prompt = PromptTemplate(
         template="""
-        <|begin_of_text|><|start_header_id|>system<|end_header_id|> 
-        You are a grader assessing whether an answer is grounded in / supported by a set of facts. 
-        Give a binary score 'yes' or 'no' score to indicate whether the answer is grounded 
-        in / supported by a set of facts. 
+        <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+        You are a grader assessing whether an answer is grounded in / supported by a set of facts.
+        Give a binary score 'yes' or 'no' score to indicate whether the answer is grounded
+        in / supported by a set of facts.
 
-        Provide the binary score as a JSON with a single key 'score' and no preamble or explanation. 
+        Provide the binary score as a JSON with a single key 'score' and no preamble or explanation.
         <|eot_id|><|start_header_id|>user<|end_header_id|>
 
         Here are the facts:
@@ -62,7 +62,7 @@ def hallucination_grader() -> RunnableSerializable:
         {documents}
         \n ------- \n
         Here is the answer:
-        {generation}  
+        {generation}
         <|eot_id|><|start_header_id|>assistant<|end_header_id|>
         """,
         input_variables=["generation", "documents"],
@@ -74,6 +74,7 @@ def hallucination_grader() -> RunnableSerializable:
 
 def answer_grader() -> RunnableSerializable:
     """Create a chain for the Answer Grader.
+
     Returns
     -------
     RunnableSerializable
@@ -82,14 +83,14 @@ def answer_grader() -> RunnableSerializable:
     llm = ChatOllama(model=MODEL_NAME, format="json", temperature=0)
     prompt = PromptTemplate(
         template="""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-        You are a grader assessing whether an answer is useful to resolve a question. 
-        Give a binary score 'yes' or 'no' to indicate whether the answer is useful to resolve a question. 
-        Provide the binary score as a JSON with a single key 'score' and no preamble or explanation. 
+        You are a grader assessing whether an answer is useful to resolve a question.
+        Give a binary score 'yes' or 'no' to indicate whether the answer is useful to resolve a question.
+        Provide the binary score as a JSON with a single key 'score' and no preamble or explanation.
         <|eot_id|><|start_header_id|>user<|end_header_id|>
-        
+
         Here is the answer:
         \n ------- \n
-        {generation} 
+        {generation}
         \n ------- \n
         Here is the question: {question}
         <|eot_id|><|start_header_id|>assistant<|end_header_id|>

@@ -1,4 +1,5 @@
 import pytest
+
 from src.pipeline.rag import generate_answer
 
 

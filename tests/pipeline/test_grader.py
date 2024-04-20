@@ -1,5 +1,6 @@
 import pytest
-from src.pipeline.grader import retrieval_grader, hallucination_grader
+
+from src.pipeline.grader import hallucination_grader, retrieval_grader
 from src.pipeline.rag import generate_answer
 
 

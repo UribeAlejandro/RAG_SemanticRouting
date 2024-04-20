@@ -4,8 +4,8 @@ from langchain_core.documents import Document
 
 
 def format_docs(docs: List[Document]) -> str:
-    """
-    Format a list of documents into a single string.
+    """Format a list of documents into a single string.
+
     Parameters
     ----------
     docs : List[Document]
