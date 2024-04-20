@@ -1,0 +1,11 @@
+langchain
+langsmith
+langchain-nomic
+langchain_community
+tiktoken
+langchainhub
+chromadb
+langgraph
+tavily-python
+transformers
+torch
