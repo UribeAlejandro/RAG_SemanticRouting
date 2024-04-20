@@ -1,0 +1,9 @@
+-r requirements.txt
+
+ruff
+black
+black[jupyter]
+isort
+docformatter
+pytest
+pytest-cov
