@@ -24,5 +24,4 @@ install:		## Install dependencies
 .PHONY: download-model
 download-model:		## Download the model
 	@echo "Downloading model ..."
-	@mkdir -p models
-	@wget -P models https://gpt4all.io/models/gguf/mistral-7b-openorca.gguf2.Q4_0.gguf
+	@wget ollama pull llama2
