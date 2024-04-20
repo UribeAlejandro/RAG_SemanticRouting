@@ -1,12 +1,10 @@
 langchain
 langsmith
-langchain-nomic
+langgraph
+langchainhub
 langchain_community
 tiktoken
-langchainhub
 chromadb
-langgraph
 tavily-python
-transformers
-torch
-accelerate
+gpt4all
+ollama
