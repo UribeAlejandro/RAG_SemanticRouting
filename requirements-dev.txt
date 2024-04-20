@@ -7,3 +7,4 @@ isort
 docformatter
 pytest
 pytest-cov
+python-dotenv

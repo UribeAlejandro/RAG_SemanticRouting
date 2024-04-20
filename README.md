@@ -6,15 +6,25 @@ This repository contains the code for building and running a RAG system that inc
 
 ### Installation
 
+Create a virtual environment:
+
+```bash
+make venv
+```
+
 Install the required packages:
 
 ```bash
 pip install -r requirements-dev.txt
 ```
 
-### Large Language Model
+### Model
 
+The model corresponds to a open-source LLM from [ChatGPT4All](https://gpt4all.io/index.html), to download the large language model:
 
+```bash
+make download-model
+```
 
 ### Langsmith
 
@@ -32,5 +42,5 @@ LANGCHAIN_API_KEY=<API_KEY>
 To run the code, you can use the following command:
 
 ```bash
-python main.py
+python -m src.main
 ```

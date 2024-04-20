@@ -20,3 +20,9 @@ venv:			## Create a virtual environment
 .PHONY: install
 install:		## Install dependencies
 	pip install -r requirements-dev.txt
+
+.PHONY: download-model
+download-model:		## Download the model
+	@echo "Downloading model ..."
+	@mkdir -p models
+	@wget -P models https://gpt4all.io/models/gguf/mistral-7b-openorca.gguf2.Q4_0.gguf
