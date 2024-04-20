@@ -9,3 +9,4 @@ langgraph
 tavily-python
 transformers
 torch
+accelerate
