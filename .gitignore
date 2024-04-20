@@ -10,7 +10,7 @@ reports/
 **/._.DS_Store
 .idea/
 *.gguf
-
+database/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
