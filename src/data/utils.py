@@ -5,7 +5,7 @@ from src import logger
 from src.constants import CHROMA_COLLECTION_NAME, CHROMA_PERSIST_DIRECTORY
 
 
-def vector_database(embedding_function: GPT4AllEmbeddings) -> Chroma:
+def vector_database(embedding_function: GPT4AllEmbeddings = GPT4AllEmbeddings()) -> Chroma:
     """Creates a vector store.
 
     Parameters

@@ -9,5 +9,5 @@ def search_tool() -> TavilySearchResults:
     TavilySearchResults
         Toll that uses Tavily Search API and gets back search results
     """
-    web_search_tool = TavilySearchResults(k=3)
+    web_search_tool = TavilySearchResults(k=1)
     return web_search_tool
