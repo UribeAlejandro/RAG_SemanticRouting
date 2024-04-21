@@ -1,15 +1,6 @@
 name: Continuous Integration
 
-on:
-  push:
-      branches:
-        - main
-        - develop
-  pull_request:
-      branches:
-        - '*'
-        - '*/*'
-        - '**'
+on: [push, pull_request]
 
 jobs:
   build:
