@@ -50,10 +50,9 @@ def hallucination_grader() -> RunnableSerializable:
     prompt = PromptTemplate(
         template="""
         <|begin_of_text|><|start_header_id|>system<|end_header_id|>
-        You are a grader assessing whether an answer is grounded in / supported by a set of facts.
+        You are a grader assessing whether an answer is grounded in, supported by a set of facts.
         Give a binary score 'yes' or 'no' score to indicate whether the answer is grounded
-        in / supported by a set of facts.
-
+        in, supported by a set of facts.
         Provide the binary score as a JSON with a single key 'score' and no preamble or explanation.
         <|eot_id|><|start_header_id|>user<|end_header_id|>
 

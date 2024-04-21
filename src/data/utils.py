@@ -1,16 +1,17 @@
-from langchain_community.embeddings import GPT4AllEmbeddings
+from langchain import embeddings as LangchainEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 
 from src import logger
-from src.constants import CHROMA_COLLECTION_NAME, CHROMA_PERSIST_DIRECTORY
+from src.constants import CHROMA_COLLECTION_NAME, CHROMA_PERSIST_DIRECTORY, EMBEDDINGS_MODEL
 
 
-def vector_database(embedding_function: GPT4AllEmbeddings) -> Chroma:
+def vector_database(embedding_function: LangchainEmbeddings) -> Chroma:
     """Creates a vector store.
 
     Parameters
     ----------
-    embedding_function: GPT4AllEmbeddings
+    embedding_function: LangchainEmbeddings
         The embedding function to use
 
     Returns
@@ -27,14 +28,14 @@ def vector_database(embedding_function: GPT4AllEmbeddings) -> Chroma:
     return vector_store
 
 
-def embeddings_model() -> GPT4AllEmbeddings:
+def embeddings_model() -> LangchainEmbeddings:
     """Creates a GPT4AllEmbeddings model.
 
     Returns
     -------
-    GPT4AllEmbeddings
-        The model
+    OllamaEmbeddings
+        Embeddings model
     """
     logger.info("Creating embeddings model")
-    model = GPT4AllEmbeddings()
+    model = OllamaEmbeddings(model=EMBEDDINGS_MODEL)
     return model

@@ -1,8 +1,8 @@
 from typing import List
 
+from langchain import embeddings as LangchainEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.embeddings import GPT4AllEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 
@@ -65,12 +65,12 @@ def load(vectorstore: Chroma, doc_splits: List[Document]) -> None:
     vectorstore.add_documents(doc_splits)
 
 
-def etl_pipeline(embedding_function: GPT4AllEmbeddings) -> None:
+def etl_pipeline(embedding_function: LangchainEmbeddings) -> None:
     """ETL pipeline.
 
     Parameters
     ----------
-    embedding_function: GPT4AllEmbeddings
+    embedding_function: LangchainEmbeddings
         The embedding function to use
     """
     logger.info("Starting ETL pipeline")

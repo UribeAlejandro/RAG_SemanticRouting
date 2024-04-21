@@ -11,3 +11,6 @@ DATA_URLS = [
 
 # LLM
 MODEL_NAME = "llama2"
+
+# Embeddings
+EMBEDDINGS_MODEL = "all-minilm"
