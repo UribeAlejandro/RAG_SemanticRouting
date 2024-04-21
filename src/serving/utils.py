@@ -7,8 +7,8 @@ from src.graph.workflow import create_workflow
 
 
 def stream_response(text: str) -> str:
-    """
-    Stream the response to the client
+    """Stream the response to the client.
+
     Parameters
     ----------
     text : str
@@ -25,8 +25,8 @@ def stream_response(text: str) -> str:
 
 @lru_cache()
 def get_app() -> CompiledGraph:
-    """
-    Get the compiled graph
+    """Get the compiled graph.
+
     Returns
     -------
     CompiledGraph

@@ -1,7 +1,7 @@
+import streamlit as st
 from dotenv import load_dotenv
 
 from src import logger
-import streamlit as st
 from src.serving.utils import get_app, stream_response
 
 load_dotenv()
@@ -11,9 +11,11 @@ if __name__ == "__main__":
     app = get_app()
 
     st.header("LLM Documentation", divider="rainbow")
-    st.caption("""Welcome to the RAG with semantic routing. 
-    Ask me anything about LLM (Agents, Adversarial Attacks, Prompt Engineering). 
-    I can also answer questions not related to LLMs""")
+    st.caption(
+        """Welcome to the RAG with semantic routing.
+    Ask me anything about LLM (Agents, Adversarial Attacks, Prompt Engineering).
+    I can also answer questions not related to LLMs"""
+    )
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -31,7 +33,7 @@ if __name__ == "__main__":
         with st.chat_message("user"):
             st.markdown(prompt)
         # Display assistant response in chat message container
-        inputs = {"question":prompt}
+        inputs = {"question": prompt}
         with st.chat_message("assistant"):
             for output in app.stream(inputs):
                 for key, value in output.items():
