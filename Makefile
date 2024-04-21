@@ -21,7 +21,13 @@ venv:			## Create a virtual environment
 install:		## Install dependencies
 	pip install -r requirements-dev.txt
 
-.PHONY: download-model
-download-model:		## Download the model
+.PHONY: download-models
+download-models:		## Download the models
+	@echo "Downloading Embeddings model ..."
+	@ollama pull all-minilm
 	@echo "Downloading model ..."
-	@wget ollama pull llama2
+	@ollama pull llama2
+
+.PHONY: run-frontend ## Run the frontend
+run_frontend:
+	python -m streamlit run src/serving/frontend.py

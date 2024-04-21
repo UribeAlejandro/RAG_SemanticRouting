@@ -1,10 +1,8 @@
 langchain
 langsmith
 langgraph
-langchainhub
 langchain_community
 tiktoken
 chromadb
 tavily-python
-gpt4all
 ollama

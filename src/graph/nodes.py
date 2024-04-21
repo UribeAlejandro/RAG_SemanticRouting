@@ -1,8 +1,10 @@
 from typing import Dict, List, Union
 
 from langchain.schema import Document
+from langchain_community.embeddings import OllamaEmbeddings
 
 from src import logger
+from src.constants import EMBEDDINGS_MODEL
 from src.data.utils import vector_database
 from src.graph.state import GraphState
 from src.pipeline.grader import retrieval_grader
@@ -26,7 +28,8 @@ def retrieve(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
 
     question = state["question"]
 
-    chroma_db = vector_database()
+    embedding_function = OllamaEmbeddings(model=EMBEDDINGS_MODEL)
+    chroma_db = vector_database(embedding_function)
     retriever = chroma_db.as_retriever()
     documents = retriever.invoke(question)
 
