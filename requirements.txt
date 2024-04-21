@@ -1,0 +1,9 @@
+langchain
+langsmith
+langgraph
+langchain_community
+tiktoken
+chromadb
+tavily-python
+ollama
+streamlit
