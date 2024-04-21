@@ -2,7 +2,7 @@
 
 This repository contains the code for building and running a RAG system that includes Semantic Routing.
 
-[![Continuous Integration](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml/badge.svg)](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml)
+[![Continuous Integration](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml)
 
 ## Table of Contents <!-- omit in toc -->
 - [Overview](#overview)
