@@ -1,8 +1,43 @@
-# RAG with Semantic Routing
+# RAG with Semantic Routing <!-- omit in toc -->
+
+This repository contains the code for building and running a RAG system that includes Semantic Routing.
 
 [![Continuous Integration](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml/badge.svg)](https://github.com/UribeAlejandro/RAG_SemanticRouting/actions/workflows/ci.yml)
 
-This repository contains the code for building and running a RAG system that includes Semantic Routing.
+## Table of Contents <!-- omit in toc -->
+- [Overview](#overview)
+- [Setup the environment](#setup-the-environment)
+  - [Installation](#installation)
+  - [Models](#models)
+  - [Langsmith](#langsmith)
+  - [Web Search](#web-search)
+- [Running the code](#running-the-code)
+  - [Extract, Transform \& Load](#extract-transform--load)
+  - [Query](#query)
+- [References](#references)
+
+
+## Overview
+
+The architecture of the system is shown below:
+
+![Architecture](img/graph.png)
+
+The system is composed of the following nodes, routes and edges:
+
+- `Route Question`: The node evaluates whether the question should be routed to the `VectorStore` or `Web Search`. To do so, uses the LLM model to classify the question. Thus, the output is a binary choice {`yes`, `no`}.
+  - `Yes` -> `VectorStore`: The question is routed to the `VectorStore` to retrieve the most relevant documents.
+  - `No` -> `Web Search`: The question is routed to the `Web Search` to include external information. 
+- `Web Search`: The node uses the Tavily API to search information related to the question.
+- `Retrieve`: The node retrieves the most relevant documents from the `VectorStore`.
+- `Grade Documents`: The node grades the documents using the LLM model. Thus, the output is a binary choice {`yes`, `no`}.
+  - `Yes` -> `Answer`: The node answers the question using the retrieved documents.
+  - `No` -> `Web Search`: The question is routed to the `Web Search` to include external information.
+- `Answer`: The node answers the question using the retrieved documents.
+- `Hallucinations Detection`: The node uses the LLM to detect hallucinations in the answer.
+  - `not useful` -> `Web Search`: The question is routed to the `Web Search` to include external information.
+  - `not supported` -> re-`renerate` the answer
+  - `useful` -> `End`: The answer is returned.
 
 ## Setup the environment
 
@@ -68,3 +103,18 @@ Run to access the frontend:
 ```bash
 make run-frontend
 ```
+
+The frontend should look like this:
+
+![Frontend](img/frontend.png)
+
+
+## References
+
+- [Ollama](https://ollama.com/)
+- [Chroma](https://docs.trychroma.com/)
+- [Langchain](https://python.langchain.com/)
+- [Langsmith](https://smith.langchain.com/)
+- [Tavily AI](https://tavily.com/)
+- [Streamlit](https://streamlit.io/)
+- [Reliable, fully local RAG agents with LLaMA](https://www.youtube.com/watch?v=-ROS6gfYIts)

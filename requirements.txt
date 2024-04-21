@@ -6,3 +6,4 @@ tiktoken
 chromadb
 tavily-python
 ollama
+streamlit

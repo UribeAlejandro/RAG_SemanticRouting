@@ -30,4 +30,4 @@ download-models:		## Download the models
 
 .PHONY: run-frontend ## Run the frontend
 run_frontend:
-	python -m streamlit run src/serving/frontend.py
+	python -m streamlit run src/main.py
