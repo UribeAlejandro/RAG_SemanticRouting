@@ -2,6 +2,7 @@ langchain
 langsmith
 langgraph
 langchain_community
+langchain_experimental
 tiktoken
 chromadb
 tavily-python

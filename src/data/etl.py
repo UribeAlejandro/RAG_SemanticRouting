@@ -1,14 +1,14 @@
 from typing import List
 
 from langchain import embeddings as LangchainEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
+from langchain_experimental.text_splitter import SemanticChunker
 
 from src import logger
 from src.constants import DATA_URLS
-from src.data.utils import vector_database
+from src.data.utils import embeddings_model, vector_database
 
 
 def extract(urls: List[str] = DATA_URLS) -> List[List[Document]]:
@@ -45,7 +45,8 @@ def transform(docs: List[List[Document]]) -> List[Document]:
     logger.info("Transforming documents")
     docs_list = [item for sublist in docs for item in sublist]
 
-    text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=250, chunk_overlap=0)
+    embeddings = embeddings_model()
+    text_splitter = SemanticChunker(embeddings=embeddings, breakpoint_threshold_type="percentile")
     doc_splits = text_splitter.split_documents(docs_list)
 
     return doc_splits
