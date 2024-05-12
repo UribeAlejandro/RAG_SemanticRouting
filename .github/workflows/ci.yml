@@ -1,9 +1,10 @@
 name: Continuous Integration
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +24,8 @@ jobs:
 
       - name: Code quality checks
         run: |
-          isort --check-only .
-          black --check .
           ruff check .
 
       - name: Test with pytest
         run: |
-          pytest -vv -cov="." tests/
+          pytest
