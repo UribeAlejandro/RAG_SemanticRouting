@@ -13,6 +13,7 @@ def stream_response(text: str) -> str:
     ----------
     text : str
         The text to be streamed
+
     Returns
     -------
     str
@@ -23,7 +24,7 @@ def stream_response(text: str) -> str:
         time.sleep(0.05)
 
 
-@lru_cache()
+@lru_cache
 def get_app() -> CompiledGraph:
     """Get the compiled graph.
 

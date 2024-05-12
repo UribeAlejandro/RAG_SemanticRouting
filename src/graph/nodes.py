@@ -1,5 +1,3 @@
-from typing import Dict, List, Union
-
 from langchain.schema import Document
 from langchain_community.embeddings import OllamaEmbeddings
 
@@ -12,13 +10,14 @@ from src.pipeline.rag import generate_answer
 from src.tools.search import search_tool
 
 
-def retrieve(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
+def retrieve(state: GraphState) -> dict[str, list[Document] | list[str]]:
     """Retrieve documents from vectorstore.
 
     Parameters
     ----------
     state : GraphState
         The current graph state
+
     Returns
     -------
     Dict[str, Union[List[Document], List[str]]]
@@ -36,13 +35,14 @@ def retrieve(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
     return {"documents": documents, "question": question}
 
 
-def generate(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
+def generate(state: GraphState) -> dict[str, list[Document] | list[str]]:
     """Generate answer using RAG on retrieved documents.
 
     Parameters
     ----------
     state : GraphState
         The current graph state
+
     Returns
     -------
     Dict[str, Union[List[Document], List[str]]]
@@ -59,13 +59,14 @@ def generate(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
     return {"documents": documents, "question": question, "generation": generation}
 
 
-def grade_documents(state: GraphState) -> Dict[str, Union[List[Document], List[str]]]:
+def grade_documents(state: GraphState) -> dict[str, list[Document] | list[str]]:
     """Grade documents based on relevance to question.
 
     Parameters
     ----------
     state : GraphState
         The current graph state
+
     Returns
     -------
     Dict[str, Union[List[Document], List[str]]]
@@ -94,13 +95,14 @@ def grade_documents(state: GraphState) -> Dict[str, Union[List[Document], List[s
     return {"documents": filtered_docs, "question": question, "web_search": should_web_search}
 
 
-def web_search(state: GraphState) -> Dict[str, Union[List[Document], str]]:
+def web_search(state: GraphState) -> dict[str, list[Document] | str]:
     """Web search based on the question.
 
     Parameters
     ----------
     state : GraphState
         The current graph state
+
     Returns
     -------
     Dict[str, Union[List[Document], str]]

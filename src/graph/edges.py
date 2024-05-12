@@ -39,6 +39,7 @@ def decide_to_generate(state: GraphState) -> str:
     ----------
     state: GraphState
         The current graph state
+
     Returns
     -------
     str

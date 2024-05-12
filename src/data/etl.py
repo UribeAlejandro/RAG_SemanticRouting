@@ -1,5 +1,3 @@
-from typing import List
-
 from langchain import embeddings as LangchainEmbeddings
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
@@ -11,7 +9,7 @@ from src.constants import DATA_URLS
 from src.data.utils import embeddings_model, vector_database
 
 
-def extract(urls: List[str] = DATA_URLS) -> List[List[Document]]:
+def extract(urls: list[str] = DATA_URLS) -> list[list[Document]]:
     """Extracts documents from the web.
 
     Parameters
@@ -29,7 +27,7 @@ def extract(urls: List[str] = DATA_URLS) -> List[List[Document]]:
     return docs
 
 
-def transform(docs: List[List[Document]]) -> List[Document]:
+def transform(docs: list[list[Document]]) -> list[Document]:
     """Transforms the documents into a list of documents.
 
     Parameters
@@ -52,7 +50,7 @@ def transform(docs: List[List[Document]]) -> List[Document]:
     return doc_splits
 
 
-def load(vectorstore: Chroma, doc_splits: List[Document]) -> None:
+def load(vectorstore: Chroma, doc_splits: list[Document]) -> None:
     """Loads the documents into the vectorstore.
 
     Parameters
